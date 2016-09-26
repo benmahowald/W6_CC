@@ -10,7 +10,7 @@ var path = require('path');
 var port = process.env.PORT | 4242;
 
 // static public folder
-app.use(express.static('/public'));
+app.use(express.static('public'));
 
 // link server side model and route
 var heroRouter = require('../router/heroRouter');
