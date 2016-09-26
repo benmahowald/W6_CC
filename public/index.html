@@ -8,14 +8,22 @@
   </head>
   <body ng-app="myApp">
     <h3>Hero Challenge</h3>
-    <form id="heroForm" ng-controller="heroController">
-      <input type="text" ng-model="alias" value="" placeholder="alias">
-      <input type="text" ng-model="first_name" value="" placeholder="first name">
-      <input type="text" ng-model="last_name" value="" placeholder="last name">
-      <input type="text" ng-model="city" value="" placeholder="city">
-      <input type="text" ng-model="power_name" value="" placeholder="super power">
-      <input type="button" name="addHero" value="Add Hero">
-      <input type="button" ng-click="getHeroes()" name="addHero" value="Get Heroes">
-    </form>
+    <div ng-controller="heroController" ng-init="getHeroes()">
+      <form id="heroForm">
+        <input type="text" ng-model="alias" value="" placeholder="alias">
+        <input type="text" ng-model="first_name" value="" placeholder="first name">
+        <input type="text" ng-model="last_name" value="" placeholder="last name">
+        <input type="text" ng-model="city" value="" placeholder="city">
+        <input type="text" ng-model="power_name" value="" placeholder="super power">
+        <input type="button" ng-click value="Add Hero">
+      </form>
+      <div ng-repeat="hero in heroes">
+        <h4>Alias: {{hero.alias}}</h4>
+        <p>Name: {{hero.last_name}}, {{hero.first_name}}<br>
+          Hometown: {{hero.city}}<br>
+          Powers: {{hero.power_name}}
+        </p>
+      </div>
+    </div>
   </body>
 </html>
