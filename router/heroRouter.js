@@ -21,6 +21,24 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
   console.log('in heroes post route');
+  var data = req.body;
+  var hero = new heroModel ({
+    alias: data.alias,
+    first_name: data.first_name,
+    last_name: data.last_name,
+    city: data.city,
+    power_name: data.power_name
+  }); // end hero constructor
+
+  hero.save( function (err) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('hero save success');
+      res.sendStatus(201);
+    } // end else
+  }); // end her.save
 }); // end post route
 
 module.exports = router;
