@@ -2,18 +2,23 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+app.use(bodyParser.json());
 var mongoose = require('mongoose');
 var path = require('path');
 
 // initialize port
 var port = process.env.PORT | 4242;
 
-// link server to DB
-var mongoURI = 'mongodb://localhost:27017/pi_pets';
-var MongoDB = mongoose.connect(mongoURI).connection;
-
 // static public folder
 app.use(express.static('/public'));
+
+// link server side model and route
+var heroRouter = require('../router/heroRouter');
+app.use(heroRouter);
+
+// link server to DB
+var mongoURI = 'mongodb://localhost:27017/w6_cc';
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 // spin server
 app.listen(port, function () {
