@@ -41,4 +41,8 @@ router.post('/', function (req, res) {
   }); // end her.save
 }); // end post route
 
+router.delete('/', function () {
+  console.log('in delete route');
+});
+
 module.exports = router;
