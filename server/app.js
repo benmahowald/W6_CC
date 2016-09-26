@@ -14,7 +14,7 @@ app.use(express.static('/public'));
 
 // link server side model and route
 var heroRouter = require('../router/heroRouter');
-app.use(heroRouter);
+app.use('/heroes', heroRouter);
 
 // link server to DB
 var mongoURI = 'mongodb://localhost:27017/w6_cc';
