@@ -15,7 +15,7 @@
         <input type="text" ng-model="last_name" value="" placeholder="last name">
         <input type="text" ng-model="city" value="" placeholder="city">
         <input type="text" ng-model="power_name" value="" placeholder="super power">
-        <input type="button" ng-click value="Add Hero">
+        <input type="button" ng-click="addHero()" value="Add Hero">
       </form>
       <div ng-repeat="hero in heroes">
         <h4>Alias: {{hero.alias}}</h4>

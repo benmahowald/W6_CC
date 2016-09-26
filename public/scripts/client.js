@@ -19,28 +19,36 @@ myApp.controller('heroController', ['$scope', '$http', function ($scope, $http) 
       }); // end then function
 }; // end getHeroes function
 
-//   $scope.addHero = function () {
-//     console.log('in getHeroes function');
-//
-//   var newHero = {
-//     alias: $scope.name,
-//     first_name: $scope.first_name,
-//     last_name: $scope.last_name,
-//     city: $scope.city,
-//     power_name: $scope.power_name
-//   }; // end newHero
-//
+  $scope.addHero = function () {
+    console.log('in getHeroes function');
+
+  var newHero = {
+    alias: $scope.name,
+    first_name: $scope.first_name,
+    last_name: $scope.last_name,
+    city: $scope.city,
+    power_name: $scope.power_name
+  }; // end newHero
+
 // set up http call to retrieve heroes in database
-// $http({
-//   method: 'POST',
-//   url: '/heroes',
-//   data: newHero
-// }).then( function (err, response){
-//     if (err) {
-//       console.log("http err:", err);
-//     } else {
-//       console.log('http success:', response);
-//     } // end else
-// }); // end $http POST
-// }; // end getHeroes function
+$http({
+  method: 'POST',
+  url: '/heroes',
+  data: newHero
+}).then( function (response){
+      console.log('http post success:', response);
+      $scope.getHeroes();
+      $scope.clearFields();
+    }, function (error) {
+      console.log('error in post;', error);
+    }); // end then function
+}; // end getHeroes function
+
+  $scope.clearFields = function(){
+    $scope.alias = '';
+    $scope.first_name = '';
+    $scope.last_name = '';
+    $scope.city = '';
+    $scope.power_name = '';
+  }; // end clear fields
 }]); // end controller
